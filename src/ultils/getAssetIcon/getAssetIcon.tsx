@@ -5,7 +5,7 @@ import { TItemTypes } from 'src/models/asset';
 
 export function getAssetIcon(type: TItemTypes) {
     if (type === 'location') {
-        return <LocationIcon />
+        return <LocationIcon width={22} height={22} fill="#2188FF"/>
     }
     return type === 'component' ? <ComponentIcon /> : <AssetIcon width={20} fill='#2188FF'/>
 }

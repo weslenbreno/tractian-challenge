@@ -7,12 +7,12 @@ type FetchAssetsResponse = {
     locations: ILocation[];
 }
 
-export async function getAssets(companyId: string | null): Promise<IAsset[]> {
+async function getAssets(companyId: string | null): Promise<IAsset[]> {
     const { data } = await apiClient.get(`/companies/${companyId}/assets`)
     return data;
 }
 
-export async function getLocations(companyId: string | null): Promise<ILocation[]> {
+async function getLocations(companyId: string | null): Promise<ILocation[]> {
     const { data } = await apiClient.get(`/companies/${companyId}/locations`)
     return data;
 }

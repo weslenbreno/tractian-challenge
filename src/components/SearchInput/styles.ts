@@ -4,6 +4,7 @@ export const SearchInputContainer = styled('div', {
     display: 'flex',
     flexDirection: 'column',
     gap: 8,
+    flex: 1,
 });
 
 export const Input = styled('input', {

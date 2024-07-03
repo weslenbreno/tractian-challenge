@@ -4,6 +4,7 @@ import { getStatusIcon } from "src/ultils";
 import InboxIcon from 'src/assets/icons/inbox.svg?react';
 import AssetNotSelected from "../AssetNotSelected/AssetNotSelected";
 import { TItemTypes, TSensorType } from "src/models/asset";
+import LocationSelected from "../LocationSelected/LocationSelected";
 
 const responsibleLabel = {
     energy: 'Elétrica',
@@ -15,6 +16,10 @@ export function AssetDetail() {
 
     if (!activeAsset) return <AssetNotSelected />
 
+    if(activeAsset.type === 'location' || activeAsset.type === 'sublocation') {
+        return <LocationSelected item={activeAsset} />
+    }
+
     function getInfo(info?: string) {
         return info ? info : '-'
     }   
@@ -25,17 +30,8 @@ export function AssetDetail() {
             vibration: 'Motor de Vibração',
         }
 
-        const assetTypeLabels: Record<TItemTypes, string> = {
-            component: 'Componente',
-            asset: 'Ativo',
-            location: 'Localização',
-            sublocation: 'Sublocalização',
-        }
-
         return type === 'component' ?
-            componentTypeLabels[activeAsset!.sensorType] :
-            assetTypeLabels[type]
-
+            componentTypeLabels[activeAsset!.sensorType] : '-'
     }
 
     function addImage() {

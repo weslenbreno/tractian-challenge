@@ -34,10 +34,10 @@ export const Section = styled('div', {
 
 export const FiltersContainer = styled('div', {
     display: 'flex',
-    flexDirection: 'column',
     gap: 8,
     padding: 16,
     borderBottom: '1px solid #D8DFE6',
+    alignItems: 'center',
 });
 
 export const Filters = styled('div', {
@@ -49,7 +49,7 @@ export const Filters = styled('div', {
 export const Filter = styled('div', {
     display: 'flex',
     gap: 8,
-    alignItems: 'center',
+    flexDirection: 'column',
 });
 
 export const FilterName = styled('span', {

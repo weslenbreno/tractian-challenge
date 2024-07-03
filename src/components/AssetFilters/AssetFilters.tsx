@@ -1,9 +1,10 @@
-import { Filter, FilterName, Filters, FiltersContainer, RadioButtons } from './styles'
+import { Filters, FiltersContainer } from './styles'
 import { SearchInput } from '../SearchInput'
 import { useAppStore } from 'src/store'
 import { useMemo } from 'react'
+import { FilterSelector } from '../FilterSelector'
 
-export default function AssetFilters() {
+export function AssetFilters() {
     const { setFilters } = useAppStore()
     const filters = useMemo(() => [
         {
@@ -39,22 +40,7 @@ export default function AssetFilters() {
             <SearchInput placeholder='Buscar Ativo ou Local' onChange={handleSearch} />
             <Filters>
                 {filters.map(filter => (
-                    <Filter key={filter.name}>
-                        <FilterName>{filter.name}</FilterName>
-                        <RadioButtons>
-                            {filter.options.map(option => (
-                                <label key={option.value}>
-                                    <input
-                                        type='radio'
-                                        name={filter.name}
-                                        value={option.value}
-                                        onChange={(e) => handleFilter(filter.key, e.target.value)}
-                                    />
-                                    <label htmlFor={filter.name}>{option.name}</label>
-                                </label>
-                            ))}
-                        </RadioButtons>
-                    </Filter>
+                    <FilterSelector key={filter.name} onChange={(value) => handleFilter(filter.key, value)} filter={filter} />
                 ))}
             </Filters>
         </FiltersContainer>

@@ -1,16 +1,16 @@
-import { useFetchAllCompanies, useFetchAssets } from "src/queries";
+import { useFetchAssets } from "src/queries";
 import { CompanyButon, CompanyButonsContainer, HeaderContainer } from "./styles";
 import { ICompany } from "src/models";
 import { useCompany } from "src/hooks/useCompany";
 import { useEffect } from "react";
+import { useAppStore } from "src/store";
 import logo from "src/assets/logo.svg";
 import CompanyIcon from "src/assets/icons/company.svg?react";
 
-
 export function Header() {
-  const { data: companyData } = useFetchAllCompanies();
   const { setCompany, resetCompany, companyId, setUpAssets } = useCompany();
   const { data: companyAssetsData, refetch: refetchAssets } = useFetchAssets(companyId);
+  const { companies } = useAppStore();
 
   useEffect(() => {
     if(companyId) refetchAssets();
@@ -26,14 +26,12 @@ export function Header() {
   if(companyAssetsData) {
     setUpAssets({ assets: companyAssetsData.assets, locations: companyAssetsData.locations });
   }
-
-  if(!companyId && companyData) setCompany(companyData[0]);
   
   return (
     <HeaderContainer>
         <img src={logo} alt="Tractian Logo" height={14}/>
         <CompanyButonsContainer>
-          {companyData?.map((companyItem) => (
+          {companies.map((companyItem) => (
             <CompanyButon 
               onClick={() => toggleSelectedCompany(companyItem)} 
               key={companyItem.id} 

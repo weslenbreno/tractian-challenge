@@ -1,6 +1,6 @@
 import { AppContainer, AppContent } from './styles'
 import { Header } from './components'
-import AssetsPage from './pages/Assets/Assets'
+import AssetsPage from './pages/AssetsPage/AssetsPage'
 
 function App() {
   return (
