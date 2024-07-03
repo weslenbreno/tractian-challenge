@@ -1,8 +1,7 @@
-import { styled } from "src/config/ stitches.config";
+import { styled } from "@stitches/react";
 
 export const TreeViewContainer = styled('div', {
     overflowY: 'scroll',
-    height: '100%',
     overflowX: 'hidden',
 });
 

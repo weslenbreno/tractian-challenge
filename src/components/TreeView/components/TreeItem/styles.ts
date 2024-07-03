@@ -39,7 +39,6 @@ export const Collapsible = styled('div', {
             },
             false: {
                 height: 'auto',
-                maxHeight: '500px',
                 transition: 'opacity 0.5s ease-out',
             },
         }
