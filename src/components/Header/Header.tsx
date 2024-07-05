@@ -9,12 +9,28 @@ import CompanyIcon from "src/assets/icons/company.svg?react";
 
 export function Header() {
   const { setCompany, resetCompany, companyId, setUpAssets } = useCompany();
-  const { data: companyAssetsData, refetch: refetchAssets } = useFetchAssets(companyId);
-  const { companies } = useAppStore();
+  const { data: companyAssetsData, refetch: refetchAssets, isFetching } = useFetchAssets(companyId);
+  const { companies, setIsLoading } = useAppStore();
 
   useEffect(() => {
-    if(companyId) refetchAssets();
+    if (companyId) refetchAssets();
   }, [companyId, refetchAssets]);
+
+  useEffect(() => {
+    if (companyAssetsData) {
+      setUpAssets({ assets: companyAssetsData.assets, locations: companyAssetsData.locations });
+    }
+  }, [companyAssetsData]);
+
+  useEffect(() => {
+    if (isFetching) {
+      setIsLoading(isFetching)
+    } else {
+      setTimeout(() => {
+        setIsLoading(isFetching);
+      }, 300);
+    }
+  }, [isFetching]);
 
   function toggleSelectedCompany(company: ICompany) {
     if (companyId === company.id) {
@@ -23,21 +39,17 @@ export function Header() {
     setCompany(company);
   }
 
-  if(companyAssetsData) {
-    setUpAssets({ assets: companyAssetsData.assets, locations: companyAssetsData.locations });
-  }
-  
   return (
     <HeaderContainer>
-        <img src={logo} alt="Tractian Logo" height={14}/>
-        <CompanyButonsContainer>
-          {companies.map((companyItem) => (
-            <CompanyButon 
-              onClick={() => toggleSelectedCompany(companyItem)} 
-              key={companyItem.id} 
-              active={companyId === companyItem.id}><CompanyIcon />{companyItem.name}</CompanyButon>
-          ))} 
-        </CompanyButonsContainer>
+      <img src={logo} alt="Tractian Logo" height={14} />
+      <CompanyButonsContainer>
+        {companies.map((companyItem) => (
+          <CompanyButon
+            onClick={() => toggleSelectedCompany(companyItem)}
+            key={companyItem.id}
+            active={companyId === companyItem.id}><CompanyIcon />{companyItem.name}</CompanyButon>
+        ))}
+      </CompanyButonsContainer>
     </HeaderContainer>
   )
 }

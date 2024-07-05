@@ -1,6 +1,4 @@
 export * from './AssetDetail'
 export * from './AssetNotSelected'
-export * from './AssetsPageLoading'
 export * from './LocationSelected'
-export * from './AssetsPageLoading'
 export * from './AssetsPageError'

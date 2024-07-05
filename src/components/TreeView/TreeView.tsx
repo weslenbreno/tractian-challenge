@@ -37,7 +37,7 @@ export function TreeView() {
         return (
             <TreeViewNode>
                 {node.children.map((child) => (
-                    <TreeItem item={child} childrenList={buildChildren(child)} />
+                    <TreeItem item={child} childrenList={buildChildren(child)} key={child.id} />
                 ))}
             </TreeViewNode>
         );
@@ -50,15 +50,15 @@ export function TreeView() {
         if (nodes.length === 0) {
             return <NotFoundText>Nenhum resultado encontrado</NotFoundText>;
         }
-
+    
         return (
             <TreeViewContainer>
                 {nodes.map((item) => (
-                    <TreeItem item={item} childrenList={buildChildren(item)} />
+                    <TreeItem item={item} childrenList={buildChildren(item)} key={item.id} />
                 ))}
             </TreeViewContainer>
         );
-    }, [tree]);
+    }, [tree, buildCompareFnFromFilters]);
 
     return buildTreeView();
 }

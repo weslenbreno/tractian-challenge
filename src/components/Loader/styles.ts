@@ -10,7 +10,7 @@ const pulse = keyframes({
     '80%': { transform: 'scale(1.2)' },
 });
 
-export const Loader = styled('div', {
+export const LoaderStyled = styled('div', {
     width: 48,
     height: 48,
     border: '5px solid #023B78',

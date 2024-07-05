@@ -1,17 +1,17 @@
 import { useEffect } from 'react'
-import { AssetFilters, PageLayout, TreeView } from 'src/components'
+import { AssetFilters, Loader, PageLayout, TreeView } from 'src/components'
 import { AssetsTreeContainer, Section } from './styles'
 import { useCompany } from 'src/hooks/useCompany'
 import { AssetDetail } from './components/AssetDetail'
 import { useAppStore } from 'src/store'
 import { useFetchAllCompanies } from 'src/queries'
-import { AssetsPageError, AssetsPageLoading } from './components'
+import { AssetsPageError } from './components'
 
 export default function AssetsPage() {
     const { data, isLoading, isError } = useFetchAllCompanies();
     const { companyId, setCompany } = useCompany()
     const { name } = useCompany()
-    const { setCompanies } = useAppStore()
+    const { setCompanies, isLoading: isLoadingAssets } = useAppStore()
 
     useEffect(() => {
         if (data) {
@@ -25,16 +25,18 @@ export default function AssetsPage() {
         }
     }, [data, companyId, setCompany])
 
-    if (isLoading) return <AssetsPageLoading />
+    if (isLoading) return <Loader message='Carregando...' />
     if (isError) return <AssetsPageError />
 
     return (
         <PageLayout title='Ativos' companyName={name}>
             <Section>
-                <AssetsTreeContainer>
-                    <AssetFilters />
-                    <TreeView />
-                </AssetsTreeContainer>
+                {isLoadingAssets ? <Loader message='Carregando ativos...' /> : (
+                    <AssetsTreeContainer>
+                        <AssetFilters />
+                        <TreeView />
+                    </AssetsTreeContainer>
+                )}
             </Section>
             <Section>
                 <AssetDetail />

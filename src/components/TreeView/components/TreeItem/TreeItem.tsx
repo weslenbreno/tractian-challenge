@@ -14,7 +14,7 @@ type TreeItemProps = {
 }
 
 export function TreeItem({ childrenList, item }: TreeItemProps) {
-    const [collapse, setCollapse] = useState(false);
+    const [collapse, setCollapse] = useState(true);
     const { activeAsset, setActiveAsset } = useAppStore(
         useShallow(state => ({
             activeAsset: state.activeAsset,
