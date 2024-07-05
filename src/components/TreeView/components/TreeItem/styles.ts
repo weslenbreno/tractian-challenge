@@ -1,4 +1,4 @@
-import { styled } from "src/config/ stitches.config";
+import { styled } from "@stitches/react";
 
 export const TreeViewNodeName = styled('div', {
     display: 'flex',
