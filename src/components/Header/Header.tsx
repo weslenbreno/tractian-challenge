@@ -10,7 +10,7 @@ import CompanyIcon from "src/assets/icons/company.svg?react";
 export function Header() {
   const { setCompany, resetCompany, companyId, setUpAssets } = useCompany();
   const { data: companyAssetsData, refetch: refetchAssets, isFetching } = useFetchAssets(companyId);
-  const { companies, setIsLoading } = useAppStore();
+  const { companies, setIsLoading, setFilters } = useAppStore();
 
   useEffect(() => {
     if (companyId) refetchAssets();
@@ -33,6 +33,7 @@ export function Header() {
   }, [isFetching]);
 
   function toggleSelectedCompany(company: ICompany) {
+    setFilters({ name: '', sensorType: '', status: '' });
     if (companyId === company.id) {
       return resetCompany();
     }
