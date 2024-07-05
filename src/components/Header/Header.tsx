@@ -1,5 +1,5 @@
 import { useFetchAssets } from "src/queries";
-import { CompanyButon, CompanyButonsContainer, HeaderContainer } from "./styles";
+import { CompanyButon, CompanyButonsContainer, HeaderContainer, Logo } from "./styles";
 import { ICompany } from "src/models";
 import { useCompany } from "src/hooks/useCompany";
 import { useEffect } from "react";
@@ -41,7 +41,7 @@ export function Header() {
 
   return (
     <HeaderContainer>
-      <img src={logo} alt="Tractian Logo" height={14} />
+      <Logo src={logo} alt="Tractian Logo" height={14} />
       <CompanyButonsContainer>
         {companies.map((companyItem) => (
           <CompanyButon

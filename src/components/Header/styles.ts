@@ -42,5 +42,11 @@ export const CompanyButon = styled('div', {
     },
 });
 
+export const Logo = styled('img', {
+    height: 14,
+    marginRight: 16,
+    cursor: 'pointer',
+});
+
 
 
