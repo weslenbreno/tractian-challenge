@@ -1,38 +1,42 @@
 # React + TypeScript + Vite
 
-Resolvendo desafio frontend [https://github.com/tractian/challenges/blob/main/front-end/README.md]
+Solving frontend challenge [https://github.com/tractian/challenges/blob/main/front-end/README.md]
 
-# Deploy 
+# Deployment
 
 https://tractian-phi.vercel.app/
 
-## Demonstração
+## Demonstration
 
 https://github.com/weslenbreno/tractian-challenge/assets/3261228/7fbf289f-8ca6-4b43-860a-05d5f092de87
 
-## Coisas para Melhorar
+## Things to Improve
 
-- **Skeleton para Carregamento:** Implementar um componente de skeleton para melhorar a experiência do usuário durante a transição e carregamento de dados.
-- **Testes Unitários:** Adicionar testes unitários para garantir a qualidade e a funcionalidade do código.
-- **Responsividade:** Aperfeiçoar a responsividade para garantir uma boa experiência em dispositivos móveis e tablets.
+- **Loading Skeleton:** Implement a skeleton component to enhance the user experience during data loading and transitions.
+- **Unit Testing:** Add unit tests to ensure code quality and functionality.
+- **Responsiveness:** Improve responsiveness to ensure a good experience on mobile devices and tablets.
+- **Companies:** Enhance UX for company selection in scenarios with a larger number.
+- **Filters:** Button to clear all filters.
+- **Tree:** Button to expand or collapse all.
 
-## Como Rodar o Projeto
+## How to Run the Project
 
-1. Clone este repositório
+1. Clone this repository
 ```sh
 git clone https://github.com/weslenbreno/tractian-challenge.git
 ```
 
-3. Entre na pasta 
+3. Navigate to the directory
+
   ```sh
   cd tractian-challenge
 ```
 
-4. Instale as dependências
+4. Install the dependencies
   ```sh
   npm install
 ```
-6. Rode o servidor de dev
+6. Run the development server
   ```sh
   npm run dev
 ```
