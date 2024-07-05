@@ -21,8 +21,8 @@ export const TreeViewNodeName = styled('div', {
 
 export const TreeViewNodeItem = styled('div', {
     display: 'flex',
-    gap: 8,
     padding: 8,
+    gap: 8,
     cursor: 'pointer',
     color: '#17192D',
     size: 14,
