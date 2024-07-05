@@ -10,7 +10,9 @@ export function getStatusIcon(node: ITreeItem) {
 
     if (node?.status === 'operating') {
         return <EnergyIcon />
+    } else if (node?.status === 'alert') {
+        return <Critical />
     }
-    
-    return <Critical />
+
+    return null
 }
